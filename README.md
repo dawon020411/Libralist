@@ -3,10 +3,10 @@
 ## List your books and search it!!
 
 >### What will the application do?
->- Tracking the books the users stored within the list.
->- Store the title, the author, the publisher, and the publication date of the books.
->- Search for the stored book by filters.
->- View the book's informations.
+>- **Tracking** the books the users stored within the list.
+>- **Store** the title, the author, the publisher, and the publication date of the books.
+>- **Search** for the stored book by filters.
+>- **View** the book's informations.
 
 >### Who will use it?
 >- The user that want efficient manager of readings that the user has read.
@@ -19,8 +19,8 @@
 
 ## User Stories
 
->- As a user, I want to be able to add my books' information.
->- As a user, I want to be able to view stored book list.
->- As a user, I want to be able to search the books' title with other information.
->- As a user, I want to be able to see the number of books.
->- As a user, I want to be able to see the books by genre filter.
+>- *As a user*, I want to be able to add my books' information.
+>- *As a user*, I want to be able to view stored book list.
+>- *As a user*, I want to be able to search the books' title with other information.
+>- *As a user*, I want to be able to see the number of books.
+>- *As a user*, I want to be able to see the books by genre filter.
