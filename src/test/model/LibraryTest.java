@@ -3,6 +3,10 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -19,7 +23,7 @@ class LibraryTest {
     public void setUp() {
         library = new Library();
         book1 = new Book("Flot Twist", "Dayna",
-                "Company A", "2022-01-01", "Humor");
+                "Company A", "2022-01-01", "Academic");
         book2 = new Book("Love Story", "Andy",
                 "Company A", "2022-02-02", "Romance");
         book3 = new Book("Bears House", "Bryan",
@@ -72,12 +76,19 @@ class LibraryTest {
         library.addBook(book3);
         library.addBook(book4);
 
+        List<Book> AcademicBooks = new ArrayList<>();
+        AcademicBooks.add(book1);
+        AcademicBooks.add(book4);
+        List<Book> FairyTaleBooks = new ArrayList<>();
+        FairyTaleBooks.add(book2);
+
+
         assertEquals("Bryan", library.getBookList().get(2).getAuthor());
-        assertEquals("Humor", library.getBookList().get(0).getGenre());
+        assertEquals("Academic", library.getBookList().get(0).getGenre());
         assertEquals("2022-03-03", library.getBookList().get(3).getPubDate());
 
-        assertEquals(2, library.getBookByGenre("Humor").size());
-        assertEquals(1, library.getBookByGenre("Fairytale").size());
-        assertEquals(0, library.getBookByGenre("WHAT").size());
+        assertEquals(AcademicBooks, library.getBookByGenre("Academic"));
+        assertEquals(FairyTaleBooks, library.getBookByGenre("Fairytale"));
+        assertEquals(new ArrayList<>(), library.getBookByGenre("WHAT"));
     }
 }
