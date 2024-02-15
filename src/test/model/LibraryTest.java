@@ -89,13 +89,44 @@ class LibraryTest {
         AcademicBooks.add(book1);
         AcademicBooks.add(book4);
         List<Book> FairyTaleBooks = new ArrayList<>();
-        FairyTaleBooks.add(book2);
+        FairyTaleBooks.add(book3);
 
 
         assertEquals(AcademicBooks, library.getBookByGenre("Academic"));
         assertEquals(FairyTaleBooks, library.getBookByGenre("Fairytale"));
         assertEquals(new ArrayList<>(), library.getBookByGenre("WHAT"));
     }
+
+
+    @Test
+    public void testGetNoBookByGenre() {
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+
+        List<Book> AcademicBooks = new ArrayList<>();
+        AcademicBooks.add(book1);
+        AcademicBooks.add(book4);
+        List<Book> FairyTaleBooks = new ArrayList<>();
+        FairyTaleBooks.add(book3);
+
+
+        assertEquals(AcademicBooks, library.getBookByGenre("ACADEMIC"));
+        assertEquals(FairyTaleBooks, library.getBookByGenre("fairytale"));
+        assertEquals(new ArrayList<>(), library.getBookByGenre("WHAT"));
+    }
+
+    @Test
+    public void testGetNoBookByGenreIgnoreCase() {
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+
+        assertEquals(new ArrayList<>(), library.getBookByGenre("WHAT"));
+    }
+
 
     @Test
     public void testGetTitle() {

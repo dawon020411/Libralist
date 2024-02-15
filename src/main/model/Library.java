@@ -15,7 +15,7 @@ public class Library {
     // MODIFIES: this.bookList
     // EFFECTS: add the specifies book to the library's book list
     public void addBook(Book book) {
-        // stub
+        this.bookList.add(book);
     }
 
     // EFFECTS: return a copy of the book list
@@ -40,7 +40,13 @@ public class Library {
     // EFFECTS: return the list of books in the library that belong to the
     //          specified genre
     public List<Book> getBookByGenre(String genre) {
-        return new ArrayList<>();
+        List<Book> result = new ArrayList<>();
+        for (Book book : this.bookList) {
+            if (book.getGenre().equalsIgnoreCase(genre)) {
+                result.add(book);
+            }
+        }
+        return result;
     }
 
 }
