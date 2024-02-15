@@ -37,9 +37,6 @@ class LibraryTest {
         library.addBook(book1);
         library.addBook(book2);
 
-        assertEquals(library.getBookList().get(1).getTitle(), "Love Story");
-        assertEquals(library.getBookList().get(1).getPublisher(), "Company A");
-
         assertEquals(2, library.getBookCount());
     }
 
@@ -83,12 +80,76 @@ class LibraryTest {
         FairyTaleBooks.add(book2);
 
 
-        assertEquals("Bryan", library.getBookList().get(2).getAuthor());
-        assertEquals("Academic", library.getBookList().get(0).getGenre());
-        assertEquals("2022-03-03", library.getBookList().get(3).getPubDate());
-
         assertEquals(AcademicBooks, library.getBookByGenre("Academic"));
         assertEquals(FairyTaleBooks, library.getBookByGenre("Fairytale"));
         assertEquals(new ArrayList<>(), library.getBookByGenre("WHAT"));
+    }
+
+    @Test
+    public void testGetTitle() {
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+
+        assertEquals(library.getBookList().get(0).getTitle(), "Flot Twist");
+        assertEquals(library.getBookList().get(1).getTitle(), "Love Story");
+        assertEquals(library.getBookList().get(2).getTitle(), "Bears House");
+        assertEquals(library.getBookList().get(3).getTitle(), "Calculus 2");
+    }
+
+    @Test
+    public void testGetAuthor() {
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+
+        assertEquals("Dayna", library.getBookList().get(0).getAuthor());
+        assertEquals("Andy", library.getBookList().get(1).getAuthor());
+        assertEquals("Bryan", library.getBookList().get(2).getAuthor());
+        assertEquals("Gregor", library.getBookList().get(3).getAuthor());
+    }
+
+    @Test
+    public void testGetPublisher() {
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+
+        assertEquals(library.getBookList().get(0).getPublisher(), "Company A");
+        assertEquals(library.getBookList().get(1).getPublisher(), "Company A");
+        assertEquals(library.getBookList().get(2).getPublisher(), "Company B");
+        assertEquals(library.getBookList().get(3).getPublisher(), "Company C");
+
+    }
+
+    @Test
+    public void TestGetPubDate() {
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+
+        assertEquals("2022-01-01", library.getBookList().get(0).getPubDate());
+        assertEquals("2022-02-02", library.getBookList().get(1).getPubDate());
+        assertEquals("2022-02-02", library.getBookList().get(2).getPubDate());
+        assertEquals("2022-03-03", library.getBookList().get(3).getPubDate());
+    }
+
+
+    @Test
+    public void testGetGenre() {
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book4);
+
+        assertEquals("Academic", library.getBookList().get(0).getGenre());
+        assertEquals("Romance", library.getBookList().get(1).getGenre());
+        assertEquals("FairyTale", library.getBookList().get(2).getGenre());
+        assertEquals("Academic", library.getBookList().get(3).getGenre());
+
     }
 }
