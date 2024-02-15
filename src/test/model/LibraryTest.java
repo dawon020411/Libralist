@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 // Book(String title, String author, String publisher, String pubDate, String genre)
 class LibraryTest {
 
@@ -31,6 +32,9 @@ class LibraryTest {
     public void testAddBook() {
         library.addBook(book1);
         library.addBook(book2);
+
+        assertEquals(library.getBookList().get(1).getTitle(), "Love Story");
+        assertEquals(library.getBookList().get(1).getPublisher(), "Company A");
 
         assertEquals(2, library.getBookCount());
     }
@@ -67,6 +71,10 @@ class LibraryTest {
         library.addBook(book2);
         library.addBook(book3);
         library.addBook(book4);
+
+        assertEquals("Bryan", library.getBookList().get(2).getAuthor());
+        assertEquals("Humor", library.getBookList().get(0).getGenre());
+        assertEquals("2022-03-03", library.getBookList().get(3).getPubDate());
 
         assertEquals(2, library.getBookByGenre("Humor").size());
         assertEquals(1, library.getBookByGenre("Fairytale").size());
