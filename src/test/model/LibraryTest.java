@@ -32,6 +32,18 @@ class LibraryTest {
                 "Company C", "2022-03-03", "Academic");
     }
 
+
+    @Test
+    public void testGetBookList() {
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book3);
+
+        assertEquals(library, library.getBookList());
+    }
+
+
     @Test
     public void testAddBook() {
         library.addBook(book1);
@@ -41,7 +53,7 @@ class LibraryTest {
     }
 
     @Test
-    public void testGetBookList() {
+    public void testSearchBook() {
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
@@ -92,23 +104,23 @@ class LibraryTest {
 
     @Test
     public void testGetAuthor() {
-        assertEquals("Dayna", book1.getTitle());
+        assertEquals("Dayna", book1.getAuthor());
     }
 
     @Test
     public void testGetPublisher() {
-        assertEquals("Company B", book3.getTitle());
+        assertEquals("Company B", book3.getPublisher());
     }
 
     @Test
     public void TestGetPubDate() {
-        assertEquals("2022-02-02", book2.getTitle());
+        assertEquals("2022-02-02", book2.getPubDate());
     }
 
 
     @Test
     public void testGetGenre() {
-        assertEquals("Academic", book4.getTitle());
+        assertEquals("Academic", book4.getGenre());
 
     }
 }
