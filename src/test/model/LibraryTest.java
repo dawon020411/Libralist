@@ -69,6 +69,10 @@ class LibraryTest {
                 "", "2022-02-02","").size());
         assertEquals(0, library.searchBook("WHAT", "",
                 "", "","").size());
+        assertEquals(1, library.searchBook("", "Gregor",
+                "", "","").size());
+        assertEquals(2, library.searchBook("", "",
+                "", "","Academic").size());
     }
 
     @Test
