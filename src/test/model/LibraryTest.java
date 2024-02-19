@@ -38,9 +38,13 @@ class LibraryTest {
         library.addBook(book1);
         library.addBook(book2);
         library.addBook(book3);
-        library.addBook(book3);
 
-        assertEquals(library, library.getBookList());
+        List<Book> expectedList = new ArrayList<>();
+        expectedList.add(book1);
+        expectedList.add(book2);
+        expectedList.add(book3);
+
+        assertEquals(expectedList, library.getBookList());
     }
 
 

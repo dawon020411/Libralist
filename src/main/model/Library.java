@@ -20,14 +20,28 @@ public class Library {
 
     // EFFECTS: return a copy of the book list
     public List<Book> getBookList() {
-        return new ArrayList<>(this.bookList);
+        return this.bookList;
     }
 
 
     // EFFECTS: return a list of books matching the specified search criteria
     public List<Book> searchBook(String title, String author, String publisher,
                                  String publicationDate, String genre) {
-        return new ArrayList<>();
+        List<Book> result = new ArrayList<>();
+        for (Book book : this.bookList) {
+            if (book.getTitle().equalsIgnoreCase(title)
+                    ||
+                    book.getAuthor().equalsIgnoreCase(author)
+                    ||
+                    book.getPublisher().equalsIgnoreCase(publisher)
+                    ||
+                    book.getPubDate().equalsIgnoreCase(publicationDate)
+                    ||
+                    book.getGenre().equalsIgnoreCase(genre)) {
+                result.add(book);
+            }
+        }
+        return result;
     }
 
 
