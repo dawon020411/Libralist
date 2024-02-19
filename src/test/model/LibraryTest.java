@@ -73,6 +73,8 @@ class LibraryTest {
                 "", "","").size());
         assertEquals(2, library.searchBook("", "",
                 "", "","Academic").size());
+        assertEquals(2, library.searchBook("", "",
+                "Company A", "","").size());
     }
 
     @Test
