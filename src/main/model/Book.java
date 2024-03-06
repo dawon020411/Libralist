@@ -3,6 +3,8 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+// This Book class is where all the book's infomation are stored.
+
 public class Book implements Writable {
     private final String title;
     private final String author;
@@ -10,6 +12,9 @@ public class Book implements Writable {
     private final String pubDate;
     private final String genre;
 
+    // REQUIRED: title should have length > 0, pubDate should be in the form of (YYYY-MM-DD)
+    // EFFECTS: set all the book information such as title, author, publisher, pubDate (YYYY-MM-DD),
+    //          and genre
     public Book(String title, String author, String publisher, String pubDate, String genre) {
         this.title = title;
         this.author = author;

@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import persistence.Writable;
 
+// This Library class is where all books will be stored in the form of ArrayList
+
 public class Library implements Writable {
     private List<Book> bookList;
 
+    // EFFECTS: generate the new ArrayList to store all books' informations
     public Library() {
         this.bookList = new ArrayList<>();
     }

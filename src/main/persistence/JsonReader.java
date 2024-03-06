@@ -11,7 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-// Represents a reader that reads workroom from JSON data stored in file
+// Represents a reader that reads library from JSON data stored in file
 public class JsonReader {
     private String source;
 
@@ -20,7 +20,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads library from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Library read() throws IOException {
         String jsonData = readFile(source);
@@ -47,7 +47,7 @@ public class JsonReader {
     }
 
     // MODIFIES: library
-    // EFFECTS: parses thingies from JSON object and adds them to library
+    // EFFECTS: parses books from JSON object and adds them to library
     private void addBooks(Library library, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("bookList");
         for (Object json : jsonArray) {
@@ -57,7 +57,7 @@ public class JsonReader {
     }
 
     // MODIFIES: library
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // EFFECTS: parses book from JSON object and adds it to library
     private void addBook(Library library, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         String author = jsonObject.getString("author");
