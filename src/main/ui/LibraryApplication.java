@@ -2,29 +2,73 @@ package ui;
 
 import model.Book;
 import model.Library;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class LibraryApplication {
-
+    private static final String JSON_STORE = "./data/library.json";
     private Library library;
     private Scanner scanner; // for user input instance
-
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     public LibraryApplication() {
         this.library = new Library();
         this.scanner = new Scanner(System.in); // user keyboard
+        this.jsonWriter = new JsonWriter(JSON_STORE);
+        this.jsonReader = new JsonReader(JSON_STORE);
+    }
+
+    // EFFECTS: run the program
+    public void run() {
+        boolean isRunning = true;
+
+        while (isRunning) {
+            displayMenu();
+            int choice = getUserInput();
+            processUserChoice(choice);
+        }
     }
 
     // EFFECTS: display the main menu on the console
     public void displayMenu() {
+        System.out.println("Select from:");
         System.out.println("1. Add a book");
         System.out.println("2. Display book list");
         System.out.println("3. Search for a book");
         System.out.println("4. Get the books by genre");
         System.out.println("5. Display book count");
-        System.out.println("6. Quit");
+        System.out.println("6. Save this library");
+        System.out.println("7. Load saved library");
+        System.out.println("8. Quit");
+    }
+
+    // EFFECTS: choice
+    private void processUserChoice(int choice) {
+        if (choice == 1) {
+            addBookUI();
+        } else if (choice == 2) {
+            displayBookList();
+        } else if (choice == 3) {
+            searchBookUI();
+        } else if (choice == 4) {
+            getGenreFilter();
+        } else if (choice == 5) {
+            displayBookCount();
+        } else if (choice == 6) {
+            saveLibrary();
+        } else if (choice == 7) {
+            loadLibrary();
+        } else if (choice == 8) {
+            exitApplication();
+        } else {
+            System.out.println("Invalid choice. Please try again.");
+        }
     }
 
 
@@ -101,44 +145,29 @@ public class LibraryApplication {
         }
     }
 
-
-    // EFFECTS: run the program
-    public void run() {
-        boolean isRunning = true;
-
-        while (isRunning) {
-            displayMenu();
-            int choice = getUserInput();
-            processUserChoice(choice);
+    // EFFECT: saves the library to file
+    private void saveLibrary() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(library);
+            jsonWriter.close();
+            System.out.println("Saved!");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
 
-
-    // EFFECTS: choice
-    private void processUserChoice(int choice) {
-        switch (choice) {
-            case 1:
-                addBookUI();
-                break;
-            case 2:
-                displayBookList();
-                break;
-            case 3:
-                searchBookUI();
-                break;
-            case 4:
-                getGenreFilter();
-                break;
-            case 5:
-                displayBookCount();
-                break;
-            case 6:
-                exitApplication();
-                break;
-            default:
-                System.out.println("Invalid choice. Please try again.");
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadLibrary() {
+        try {
+            library = jsonReader.read();
+            System.out.println("Loaded from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
+
 
     // EFFECTS: display exit application message
     private void exitApplication() {

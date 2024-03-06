@@ -1,7 +1,9 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
 
-public class Book {
+public class Book implements Writable {
     private final String title;
     private final String author;
     private final String publisher;
@@ -36,5 +38,15 @@ public class Book {
         return this.genre;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("title", title);
+        json.put("author", author);
+        json.put("publisher", publisher);
+        json.put("pubDate", pubDate);
+        json.put("genre", genre);
+        return json;
+    }
 
 }

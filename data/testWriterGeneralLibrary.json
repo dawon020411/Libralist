@@ -1,0 +1,16 @@
+{"bookList": [
+    {
+        "author": "Dayna",
+        "genre": "Romance",
+        "publisher": "Company A",
+        "title": "Romeo",
+        "pubDate": "2004-02-04"
+    },
+    {
+        "author": "Trueman",
+        "genre": "Academic",
+        "publisher": "Company B",
+        "title": "Calculus 3",
+        "pubDate": "2022-12-31"
+    }
+]}

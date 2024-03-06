@@ -1,10 +1,15 @@
 package model;
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
+import persistence.Writable;
 
-public class Library {
+public class Library implements Writable {
     private List<Book> bookList;
 
     public Library() {
@@ -63,4 +68,21 @@ public class Library {
         return result;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("bookList", bookListToJson());
+        return json;
+    }
+
+    // EFFECTS: returns book list in the library as a JSON array
+    private JSONArray bookListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Book book : bookList) {
+            jsonArray.put(book.toJson());
+        }
+
+        return jsonArray;
+    }
 }
