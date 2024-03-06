@@ -24,3 +24,5 @@
 >- *As a user*, I want to be able to search the books' title with other information.
 >- *As a user*, I want to be able to see the number of books.
 >- *As a user*, I want to be able to see the books by genre filter.
+>- *As a user*, I want to be able to save my to-do list to file (if I so choose)
+>- *As a user*, I want to be able to be able to load my to-do list from file (if I so choose)
