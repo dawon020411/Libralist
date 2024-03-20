@@ -1,16 +1,30 @@
 {"bookList": [
     {
-        "author": "b",
-        "genre": "e",
-        "publisher": "c",
-        "title": "a",
-        "pubDate": "d"
+        "author": "Dayna.Y",
+        "genre": "Romance",
+        "publisher": "C Company",
+        "title": "Your Love was poor, Darling",
+        "pubDate": "2024-03-18"
     },
     {
-        "author": "b",
-        "genre": "f",
-        "publisher": "e",
-        "title": "a",
-        "pubDate": "d"
+        "author": "Andrew.K",
+        "genre": "Academic",
+        "publisher": "University of British Columbia",
+        "title": "Calculus C",
+        "pubDate": "1929-11-02"
+    },
+    {
+        "author": "Daryn.J",
+        "genre": "Humor",
+        "publisher": "Co. Stand-up-Comedy",
+        "title": "How to be fun daddy",
+        "pubDate": "2001-02-04"
+    },
+    {
+        "author": "Bryan.K",
+        "genre": "Fairytale",
+        "publisher": "Co. Tooth Fairy",
+        "title": "Happy Birthday, Buddy!",
+        "pubDate": "2012-11-12"
     }
 ]}
