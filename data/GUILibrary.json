@@ -1,0 +1,23 @@
+{"bookList": [
+    {
+        "author": "Dayna.Y",
+        "genre": "Article",
+        "publisher": "University of British Columbia",
+        "title": "Romance is the best emotion in the world",
+        "pubDate": "2004-02-04"
+    },
+    {
+        "author": "Bryan.K",
+        "genre": "Journal",
+        "publisher": "Simon Fraser University",
+        "title": "I don't care about what you are saying!",
+        "pubDate": "2002-11-12"
+    },
+    {
+        "author": "Felix.Firas",
+        "genre": "Academic",
+        "publisher": "UBC-CPSC 210",
+        "title": "Software Development",
+        "pubDate": "2024-01-15"
+    }
+]}
