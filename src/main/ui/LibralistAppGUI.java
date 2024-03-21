@@ -57,8 +57,8 @@ public class LibralistAppGUI extends JFrame {
 
     // display screen
     private final JPanel displayPanel = new JPanel();
-    private DefaultListModel bookList = new DefaultListModel();
-    private JList displayBooks = new JList(bookList);
+    private final DefaultListModel bookList = new DefaultListModel();
+    private final JList displayBooks = new JList(bookList);
     private Library library = new Library();
     private final JButton displayToBackButton = new JButton("back");
 
@@ -76,7 +76,7 @@ public class LibralistAppGUI extends JFrame {
     private final JTextField genreSearchTextField = new JTextField();
     private final JButton searchBookButton = new JButton("Search");
     private final JButton searchToBackButton = new JButton("back");
-    private DefaultListModel bookSearchList = new DefaultListModel();
+    private final DefaultListModel bookSearchList = new DefaultListModel();
     private JList searchBooks = new JList(bookSearchList);
 
     // get book by genre screen
@@ -85,7 +85,7 @@ public class LibralistAppGUI extends JFrame {
     private final JTextField getGenreTextField = new JTextField();
     private final JButton genreFilterButton = new JButton("Filter");
     private final JButton genreToBackButton = new JButton("Back");
-    private DefaultListModel genreList = new DefaultListModel();
+    private final DefaultListModel genreList = new DefaultListModel();
     private JList genreBooks = new JList(genreList);
 
     // EFFECTS: run the application with GUI
@@ -110,18 +110,35 @@ public class LibralistAppGUI extends JFrame {
         panelTransition.add(genrePanel, "6");
 
         cardLayout.show(panelTransition, "1");
+
+        jframe.add(panelTransition);
+        jframe.setSize(600, 800);
+        jframe.setResizable(false);
+        jframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        jframe.setVisible(true);
+        guiActions();
+    }
+
+    public void guiActions() {
         setStartPanel();
         setMainPanel();
         setAddPanel();
         setDisplayPanel();
         setSearchPanel();
         setGenrePanel();
-        actionPerformed();
-        jframe.add(panelTransition);
-        jframe.setSize(600, 800);
-        jframe.setResizable(false);
-        jframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        jframe.setVisible(true);
+
+        addSearchButtons();
+        addAddButtons();
+
+        actionPerformedMainTransition();
+        actionPerformedBackTransition();
+        actionPerformedAdd();
+        actionPerformedSearch();
+        actionPerformedGenre();
+        actionPerformedCount();
+        actionPerformedSave();
+        actionPerformedLoad();
+        actionPerformedQuit();
     }
 
     // EFFECTS: set the start screen
@@ -170,30 +187,32 @@ public class LibralistAppGUI extends JFrame {
         int textHeight = 35;
         addPanel.setLayout(null);
         addPanel.setBackground(new Color(197, 255, 178));
-
         titleLabel.setBounds(labelX, 100, 100, labelHeight);
         authorLabel.setBounds(labelX, 100 + labelHeight + spacing, 150, labelHeight);
         publisherLabel.setBounds(labelX, 100 + 2 * (labelHeight + spacing), 175, labelHeight);
         pubDateLabel.setBounds(labelX, 100 + 3 * (labelHeight + spacing), 230, labelHeight);
         genreDateLabel.setBounds(labelX, 100 + 4 * (labelHeight + spacing), 150, labelHeight);
-        addPanel.add(titleLabel);
-        addPanel.add(authorLabel);
-        addPanel.add(publisherLabel);
-        addPanel.add(pubDateLabel);
-        addPanel.add(genreDateLabel);
         titleTextField.setBounds(textX, 100, textWidth, textHeight);
         authorTextField.setBounds(textX, 100 + labelHeight + spacing, textWidth, textHeight);
         publisherTextField.setBounds(textX, 100 + 2 * (labelHeight + spacing), textWidth, textHeight);
         pubDateTextField.setBounds(textX, 100 + 3 * (labelHeight + spacing), textWidth, textHeight);
         genreTextField.setBounds(textX, 100 + 4 * (labelHeight + spacing), textWidth, textHeight);
+        addBookButton.setBounds(200, 500, 200, 80);
+        addToBackButton.setBounds(250, 650, 100, 35);
+    }
+
+    public void addAddButtons() {
+        addPanel.add(titleLabel);
+        addPanel.add(authorLabel);
+        addPanel.add(publisherLabel);
+        addPanel.add(pubDateLabel);
+        addPanel.add(genreDateLabel);
         addPanel.add(titleTextField);
         addPanel.add(authorTextField);
         addPanel.add(publisherTextField);
         addPanel.add(pubDateTextField);
         addPanel.add(genreTextField);
-        addBookButton.setBounds(200, 500, 200, 80);
         addPanel.add(addBookButton);
-        addToBackButton.setBounds(250, 650, 100, 35);
         addPanel.add(addToBackButton);
     }
 
@@ -224,26 +243,29 @@ public class LibralistAppGUI extends JFrame {
         publisherSearchLabel.setBounds(labelX, 80 + 2 * (labelHeight + spacing), 175, labelHeight);
         pubDateSearchLabel.setBounds(labelX, 80 + 3 * (labelHeight + spacing), 230, labelHeight);
         genreDateSearchLabel.setBounds(labelX, 80 + 4 * (labelHeight + spacing), 150, labelHeight);
-        searchPanel.add(titleSearchLabel);
-        searchPanel.add(authorSearchLabel);
-        searchPanel.add(publisherSearchLabel);
-        searchPanel.add(pubDateSearchLabel);
-        searchPanel.add(genreDateSearchLabel);
         titleSearchTextField.setBounds(textX, 80, textWidth, textHeight);
         authorSearchTextField.setBounds(textX, 80 + labelHeight + spacing, textWidth, textHeight);
         publisherSearchTextField.setBounds(textX, 80 + 2 * (labelHeight + spacing), textWidth, textHeight);
         pubDateSearchTextField.setBounds(textX, 80 + 3 * (labelHeight + spacing), textWidth, textHeight);
         genreSearchTextField.setBounds(textX, 80 + 4 * (labelHeight + spacing), textWidth, textHeight);
+        searchBookButton.setBounds(110, 650, 200, 80);
+        searchToBackButton.setBounds(370, 675, 100, 35);
+        searchBooks.setBounds(labelX, 80 + 5 * (labelHeight + spacing), 420, 190);
+    }
+
+    public void addSearchButtons() {
+        searchPanel.add(titleSearchLabel);
+        searchPanel.add(authorSearchLabel);
+        searchPanel.add(publisherSearchLabel);
+        searchPanel.add(pubDateSearchLabel);
+        searchPanel.add(genreDateSearchLabel);
         searchPanel.add(titleSearchTextField);
         searchPanel.add(authorSearchTextField);
         searchPanel.add(publisherSearchTextField);
         searchPanel.add(pubDateSearchTextField);
         searchPanel.add(genreSearchTextField);
-        searchBookButton.setBounds(110, 650, 200, 80);
         searchPanel.add(searchBookButton);
-        searchToBackButton.setBounds(370, 675, 100, 35);
         searchPanel.add(searchToBackButton);
-        searchBooks.setBounds(labelX, 80 + 5 * (labelHeight + spacing), 420, 190);
         searchPanel.add(searchBooks);
     }
 
@@ -268,7 +290,9 @@ public class LibralistAppGUI extends JFrame {
         genrePanel.add(genreBooks);
     }
 
-    public void actionPerformed() {
+
+
+    public void actionPerformedMainTransition() {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -283,13 +307,6 @@ public class LibralistAppGUI extends JFrame {
             }
         });
 
-        addToBackButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(panelTransition, "2");
-            }
-        });
-
         displayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -297,27 +314,30 @@ public class LibralistAppGUI extends JFrame {
             }
         });
 
+    }
+
+    public void actionPerformedBackTransition() {
         displayToBackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(panelTransition, "2");
             }
         });
-
-        genreButton.addActionListener(new ActionListener() {
+        searchToBackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(panelTransition, "6");
+                cardLayout.show(panelTransition, "2");
             }
         });
-
-        searchButton.addActionListener(new ActionListener() {
+        genreToBackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(panelTransition, "5");
+                cardLayout.show(panelTransition, "2");
             }
         });
+    }
 
+    public void actionPerformedAdd() {
         addBookButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -333,6 +353,21 @@ public class LibralistAppGUI extends JFrame {
                 bookList.addElement(newBook.getTitle());
                 clearAddPanelTextFields();
                 JOptionPane.showMessageDialog(null, "Added a book successfully!");
+            }
+        });
+        addToBackButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(panelTransition, "2");
+            }
+        });
+    }
+
+    public void actionPerformedSearch() {
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(panelTransition, "5");
             }
         });
 
@@ -354,6 +389,15 @@ public class LibralistAppGUI extends JFrame {
                 }
             }
         });
+    }
+
+    public void actionPerformedGenre() {
+        genreButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(panelTransition, "6");
+            }
+        });
 
         genreFilterButton.addActionListener(new ActionListener() {
             @Override
@@ -369,28 +413,19 @@ public class LibralistAppGUI extends JFrame {
                 }
             }
         });
+    }
 
-        searchToBackButton.addActionListener(new ActionListener() {
+    public void actionPerformedCount() {
+        bookCountButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(panelTransition, "2");
+                int bookCount = library.getBookCount();
+                JOptionPane.showMessageDialog(null, "Total number of books: " + bookCount);
             }
         });
+    }
 
-        genreToBackButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(panelTransition, "2");
-            }
-        });
-
-        quitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-
+    public void actionPerformedSave() {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -405,7 +440,9 @@ public class LibralistAppGUI extends JFrame {
                 }
             }
         });
+    }
 
+    public void actionPerformedLoad() {
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -423,12 +460,13 @@ public class LibralistAppGUI extends JFrame {
                 }
             }
         });
+    }
 
-        bookCountButton.addActionListener(new ActionListener() {
+    public void actionPerformedQuit() {
+        quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int bookCount = library.getBookCount();
-                JOptionPane.showMessageDialog(null, "Total number of books: " + bookCount);
+                System.exit(0);
             }
         });
     }
