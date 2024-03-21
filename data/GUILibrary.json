@@ -1,6 +1,13 @@
 {"bookList": [
     {
         "author": "Dayna.Y",
+        "genre": "Test",
+        "publisher": "UBC",
+        "title": "I'm testing my GUI",
+        "pubDate": "2004-02-04"
+    },
+    {
+        "author": "Dayna.Y",
         "genre": "Article",
         "publisher": "University of British Columbia",
         "title": "Romance is the best emotion in the world",
