@@ -17,19 +17,19 @@ import javax.swing.SwingUtilities;
 // EFFECTS: Graphic User Interface (GUI) for Libralist application
 public class LibralistAppGUI extends JFrame {
 
-    // setUp fields!
+    // setUp fields
     private static final String JSON_STORE = "./data/GUILibrary.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private final CardLayout cardLayout = new CardLayout();
 
-    // start
+    // start screen
     private final JFrame jframe = new JFrame("Libralist");
     private final JPanel panelTransition = new JPanel();
     private final JPanel startPanel = new JPanel();
     private final JButton startButton = new JButton("Welcome to your Libralist");
 
-    // all buttons
+    // main buttons
     private final JPanel mainPanel = new JPanel();
     private final JButton addButton = new JButton("Add a Book");
     private final JButton displayButton = new JButton("Display Book List");
@@ -79,7 +79,7 @@ public class LibralistAppGUI extends JFrame {
     private final DefaultListModel bookSearchList = new DefaultListModel();
     private JList searchBooks = new JList(bookSearchList);
 
-    // get book by genre screen
+    // genre screen
     private final JPanel genrePanel = new JPanel();
     private final JLabel getGenreLabel = new JLabel("What genre of book are you looking for?");
     private final JTextField getGenreTextField = new JTextField();
@@ -99,7 +99,7 @@ public class LibralistAppGUI extends JFrame {
     }
 
 
-    // EFFECTS: Stack a panels and set the layout
+    // EFFECTS: Stack a panels and set the layout and apply the actions of the buttons
     public LibralistAppGUI() {
         panelTransition.setLayout(cardLayout);
         panelTransition.add(startPanel,"1");
@@ -119,6 +119,7 @@ public class LibralistAppGUI extends JFrame {
         guiActions();
     }
 
+    // EFFECTS: set the panels, add buttons, and actions of the buttons
     public void guiActions() {
         setStartPanel();
         setMainPanel();
@@ -201,6 +202,7 @@ public class LibralistAppGUI extends JFrame {
         addToBackButton.setBounds(250, 650, 100, 35);
     }
 
+    // EFFECTS: add a buttons to add screen
     public void addAddButtons() {
         addPanel.add(titleLabel);
         addPanel.add(authorLabel);
@@ -253,6 +255,7 @@ public class LibralistAppGUI extends JFrame {
         searchBooks.setBounds(labelX, 80 + 5 * (labelHeight + spacing), 420, 190);
     }
 
+    // EFFECTS: add a buttons to search screen
     public void addSearchButtons() {
         searchPanel.add(titleSearchLabel);
         searchPanel.add(authorSearchLabel);
@@ -291,7 +294,7 @@ public class LibralistAppGUI extends JFrame {
     }
 
 
-
+    // EFFECTS: action of the buttons, mainly panel transition buttons
     public void actionPerformedMainTransition() {
         startButton.addActionListener(new ActionListener() {
             @Override
@@ -316,6 +319,7 @@ public class LibralistAppGUI extends JFrame {
 
     }
 
+    // EFFECTS: action of the buttons, mainly panel transition, back to main, buttons
     public void actionPerformedBackTransition() {
         displayToBackButton.addActionListener(new ActionListener() {
             @Override
@@ -337,6 +341,7 @@ public class LibralistAppGUI extends JFrame {
         });
     }
 
+    // EFFECTS: actions of the buttons, mainly in the add panel
     public void actionPerformedAdd() {
         addBookButton.addActionListener(new ActionListener() {
             @Override
@@ -363,6 +368,7 @@ public class LibralistAppGUI extends JFrame {
         });
     }
 
+    // EFFECTS: action of the buttons, mainly in the search panel
     public void actionPerformedSearch() {
         searchButton.addActionListener(new ActionListener() {
             @Override
@@ -391,6 +397,7 @@ public class LibralistAppGUI extends JFrame {
         });
     }
 
+    // EFFECTS: action of the buttons, mainly in genre panel
     public void actionPerformedGenre() {
         genreButton.addActionListener(new ActionListener() {
             @Override
@@ -415,6 +422,7 @@ public class LibralistAppGUI extends JFrame {
         });
     }
 
+    // EFFECTS: action of the buttons, for book count function
     public void actionPerformedCount() {
         bookCountButton.addActionListener(new ActionListener() {
             @Override
@@ -425,6 +433,7 @@ public class LibralistAppGUI extends JFrame {
         });
     }
 
+    // EFFECTS: action of the buttons, for saving
     public void actionPerformedSave() {
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -442,6 +451,7 @@ public class LibralistAppGUI extends JFrame {
         });
     }
 
+    // EFFECTS: action of the buttons, for loading
     public void actionPerformedLoad() {
         loadButton.addActionListener(new ActionListener() {
             @Override
@@ -462,6 +472,7 @@ public class LibralistAppGUI extends JFrame {
         });
     }
 
+    // EFFECTS: action of the buttons, for quit the program
     public void actionPerformedQuit() {
         quitButton.addActionListener(new ActionListener() {
             @Override
@@ -471,6 +482,7 @@ public class LibralistAppGUI extends JFrame {
         });
     }
 
+    // EFFECTS: clear the given text field
     private void clearAddPanelTextFields() {
         titleTextField.setText("");
         authorTextField.setText("");

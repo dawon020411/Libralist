@@ -4,7 +4,6 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 // This Book class is where all the book's infomation are stored.
-
 public class Book implements Writable {
     private final String title;
     private final String author;
@@ -23,26 +22,32 @@ public class Book implements Writable {
         this.genre = genre;
     }
 
+    // EFFECTS: get tile of the book
     public String getTitle() {
         return this.title;
     }
 
+    // EFFECTS: get author of the book
     public String getAuthor() {
         return this.author;
     }
 
+    // EFFECTS: get publisher of the book
     public String getPublisher() {
         return this.publisher;
     }
 
+    // EFFECTS: get publication date of the book
     public String getPubDate() {
         return this.pubDate;
     }
 
+    // get genre of the book
     public String getGenre() {
         return this.genre;
     }
 
+    // EFFECTS: get the data from the book objects, and return it to json to save the data to file
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

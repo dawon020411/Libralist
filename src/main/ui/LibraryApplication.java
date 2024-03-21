@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+// EFFECTS: application of the Library.
 public class LibraryApplication {
     private static final String JSON_STORE = "./data/library.json";
     private Library library;
@@ -17,6 +18,7 @@ public class LibraryApplication {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
+    // EFFECTS: set a objects of fields to new object.
     public LibraryApplication() {
         this.library = new Library();
         this.scanner = new Scanner(System.in); // user keyboard
