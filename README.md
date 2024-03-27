@@ -1,6 +1,6 @@
 # LibraList
 
-## List your books and search it!!
+## List your books and search it !!
 
 >### What will the application do?
 >- **Tracking** the books the users stored within the list.
@@ -16,7 +16,7 @@
 >- Sometimes, I remember only the publication date or the author of the books, but not the title.
 >- So, I want to search the book's information that I want with filter by genre, or the author's name.
 
-
+---
 ## User Stories
 
 >- *As a user*, I want to be able to add my books' information.
@@ -26,3 +26,14 @@
 >- *As a user*, I want to be able to see the books by genre filter.
 >- *As a user*, I want to be able to save my to-do list to file (if I so choose)
 >- *As a user*, I want to be able to be able to load my to-do list from file (if I so choose)
+
+---
+## Instructions for Grader
+- You can generate the first required action (add a book) related to the user story "adding multiple Xs to a Y" 
+by filling the 'title', 'author', 'publisher', 'publication date', and 'genre' text fields and pressing the 'Add' 
+button.
+- You can generate the second required action (search a book) related to the user story "adding multiple Xs to a Y"
+by filling at least one of text fields and pressing 'Search' button.
+- You can locate my visual component by backgrounds of each panels.
+- You can save the state of my application by clicking the 'Save Your Library' button in main page.
+- You can reload the state of my application by clicking the 'Load Your Library' button in main page.

@@ -4,10 +4,13 @@ import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -140,13 +143,22 @@ public class LibralistAppGUI extends JFrame {
         actionPerformedSave();
         actionPerformedLoad();
         actionPerformedQuit();
+
+        setBackgroundImage();
     }
 
     // EFFECTS: set the start screen
     public void setStartPanel() {
         startPanel.setLayout(null);
-        startPanel.setBackground(new Color(229, 195, 172));
-        startButton.setBounds(200, 500, 200, 80);
+        try {
+            BufferedImage myPicture = ImageIO.read(new File("images/startPanel.png"));
+            JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+            picLabel.setBounds(0, 0, 600, 800);
+            startPanel.add(picLabel);
+        } catch (IOException e) {
+            System.out.println("IOException caught");
+        }
+        startButton.setBounds(175, 350, 250, 100);
         startPanel.add(startButton);
     }
 
@@ -158,8 +170,6 @@ public class LibralistAppGUI extends JFrame {
         int initialY = 150;
         int spacing = 10;
         mainPanel.setLayout(null);
-        mainPanel.setBackground(new Color(252, 237, 154));
-
         addButton.setBounds(initialX, initialY, buttonWidth, buttonHeight);
         displayButton.setBounds(initialX, initialY + buttonHeight + spacing, buttonWidth, buttonHeight);
         searchButton.setBounds(initialX, initialY + 2 * (buttonHeight + spacing), buttonWidth, buttonHeight);
@@ -176,6 +186,33 @@ public class LibralistAppGUI extends JFrame {
         mainPanel.add(saveButton);
         mainPanel.add(loadButton);
         mainPanel.add(quitButton);
+    }
+
+    // EFFECTS: add background images to panels
+    public void setBackgroundImage() {
+        try {
+            BufferedImage mainPicture = ImageIO.read(new File("images/mainPanel.png"));
+            JLabel mainLabel = new JLabel(new ImageIcon(mainPicture));
+            mainLabel.setBounds(0, 0, 600, 800);
+            mainPanel.add(mainLabel);
+
+            BufferedImage addPicture = ImageIO.read(new File("images/addPanel.png"));
+            JLabel addLabel = new JLabel(new ImageIcon(addPicture));
+            addLabel.setBounds(0, 0, 600, 800);
+            addPanel.add(addLabel);
+
+            BufferedImage searchPicture = ImageIO.read(new File("images/searchPanel.png"));
+            JLabel searchLabel = new JLabel(new ImageIcon(searchPicture));
+            searchLabel.setBounds(0, 0, 600, 800);
+            searchPanel.add(searchLabel);
+
+            BufferedImage byGenrePicture = ImageIO.read(new File("images/byGenrePanel.png"));
+            JLabel genreLabel = new JLabel(new ImageIcon(byGenrePicture));
+            genreLabel.setBounds(0, 0, 600, 800);
+            genrePanel.add(genreLabel);
+        } catch (IOException e) {
+            System.out.println("IOException caught");
+        }
     }
 
     // EFFECTS: set the add screen
@@ -228,6 +265,15 @@ public class LibralistAppGUI extends JFrame {
 
         displayBooks.setBounds(150, 150, 300, 400);
         displayPanel.add(displayBooks);
+
+        try {
+            BufferedImage displayPicture = ImageIO.read(new File("images/displayPanel.png"));
+            JLabel displayLabel = new JLabel(new ImageIcon(displayPicture));
+            displayLabel.setBounds(0, 0, 600, 800);
+            displayPanel.add(displayLabel);
+        } catch (IOException e) {
+            System.out.println("IOException caught");
+        }
     }
 
     // EFFECTS: set the search screen
