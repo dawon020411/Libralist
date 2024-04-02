@@ -37,3 +37,12 @@ by filling at least one of text fields and pressing 'Search' button.
 - You can locate my visual component by backgrounds of each panels.
 - You can save the state of my application by clicking the 'Save Your Library' button in main page.
 - You can reload the state of my application by clicking the 'Load Your Library' button in main page.
+
+---
+## Phase 4: Task 2
+>- A book is added to the Library.
+>- A book is searched from the Library.
+>- The number of books in the Library is counted.
+>- A book is searched by genre from the Library.
+---
+## Phase 4: Task 3

@@ -19,9 +19,10 @@ public class Library implements Writable {
 
     // REQUIRES: book != null
     // MODIFIES: this.bookList
-    // EFFECTS: add the specifies book to the library's book list
+    // EFFECTS: add the specifies book to the library's book list and log the event
     public void addBook(Book book) {
         this.bookList.add(book);
+        EventLog.getInstance().logEvent(new Event("A book is added to the Library."));
     }
 
     // EFFECTS: return a copy of the book list
@@ -47,12 +48,14 @@ public class Library implements Writable {
                 result.add(book);
             }
         }
+        EventLog.getInstance().logEvent(new Event("A book is searched from the Library."));
         return result;
     }
 
 
     // EFFECTS: return the total number of books in the library
     public int getBookCount() {
+        EventLog.getInstance().logEvent(new Event("The number of books in the Library is counted."));
         return this.bookList.size();
     }
 
@@ -66,6 +69,7 @@ public class Library implements Writable {
                 result.add(book);
             }
         }
+        EventLog.getInstance().logEvent(new Event("A book is searched by genre from the Library."));
         return result;
     }
 
