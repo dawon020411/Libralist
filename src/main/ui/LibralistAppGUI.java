@@ -1,6 +1,7 @@
 package ui;
 
 import model.*;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -9,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -113,7 +116,7 @@ public class LibralistAppGUI extends JFrame {
         panelTransition.add(genrePanel, "6");
 
         cardLayout.show(panelTransition, "1");
-
+        jframe.addWindowListener(new CloseTheWindow());
         jframe.add(panelTransition);
         jframe.setSize(600, 800);
         jframe.setResizable(false);
@@ -523,6 +526,9 @@ public class LibralistAppGUI extends JFrame {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println(event.getDescription());
+                }
                 System.exit(0);
             }
         });
@@ -543,6 +549,16 @@ public class LibralistAppGUI extends JFrame {
         genreSearchTextField.setText("");
 
         getGenreTextField.setText("");
+    }
+
+    private class CloseTheWindow extends WindowAdapter {
+        public void windowClosing(WindowEvent e) {
+            for (Event event : EventLog.getInstance()) {
+                System.out.println(event.getDescription());
+            }
+
+            System.exit(0);
+        }
     }
 
 }
