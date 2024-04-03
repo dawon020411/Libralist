@@ -404,7 +404,7 @@ public class LibralistAppGUI extends JFrame {
                 Book newBook = new Book(title, author, publisher, pubDate, genre);
 
                 library.addBook(newBook);
-                bookList.addElement(newBook.getTitle());
+                bookList.addElement(newBook.getTitle() + " by " + newBook.getAuthor());
                 clearAddPanelTextFields();
                 JOptionPane.showMessageDialog(null, "Added a book successfully!");
             }
@@ -440,7 +440,7 @@ public class LibralistAppGUI extends JFrame {
                 List<Book> searchResult = library.searchBook(title, author, publisher, pubDate, genre);
 
                 for (Book book : searchResult) {
-                    bookSearchList.addElement(book.getTitle());
+                    bookSearchList.addElement(book.getTitle() + " by " + book.getAuthor());
                 }
             }
         });
@@ -465,7 +465,7 @@ public class LibralistAppGUI extends JFrame {
                 List<Book> genreResult = library.getBookByGenre(genre);
 
                 for (Book book : genreResult) {
-                    genreList.addElement(book.getTitle());
+                    genreList.addElement(book.getTitle() + " by " + book.getAuthor());
                 }
             }
         });
@@ -507,10 +507,10 @@ public class LibralistAppGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 jsonReader = new JsonReader(JSON_STORE);
                 try {
-                    Library loadedLibrary = jsonReader.read();
-                    for (Book book : loadedLibrary.getBookList()) {
-                        library.addBook(book);
-                        bookList.addElement(book.getTitle());
+                    library = jsonReader.read();
+                    for (Book book : library.getBookList()) {
+//                        library.addBook(book);
+                        bookList.addElement(book.getTitle() + " by " + book.getAuthor());
                     }
                     JOptionPane.showMessageDialog(null, "Loaded successfully!");
                 } catch (IOException ex) {

@@ -1,10 +1,14 @@
 package ui;
 
 import model.Book;
+import model.Event;
+import model.EventLog;
 import model.Library;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -174,6 +178,9 @@ public class LibraryApplication {
     // EFFECTS: display exit application message
     private void exitApplication() {
         System.out.println("Goodbye!");
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event.getDescription());
+        }
         System.exit(0);
     }
 }
