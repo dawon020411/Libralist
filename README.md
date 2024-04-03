@@ -6,7 +6,7 @@
 >- **Tracking** the books the users stored within the list.
 >- **Store** the title, the author, the publisher, and the publication date of the books.
 >- **Search** for the stored book by filters.
->- **View** the book's informations.
+>- **View** the book's information.
 
 >### Who will use it?
 >- The user that want efficient manager of readings that the user has read.
@@ -34,7 +34,7 @@ by filling the 'title', 'author', 'publisher', 'publication date', and 'genre' t
 button.
 - You can generate the second required action (search a book) related to the user story "adding multiple Xs to a Y"
 by filling at least one of text fields and pressing 'Search' button.
-- You can locate my visual component by backgrounds of each panels.
+- You can locate my visual component by backgrounds of each panel.
 - You can save the state of my application by clicking the 'Save Your Library' button in main page.
 - You can reload the state of my application by clicking the 'Load Your Library' button in main page.
 
@@ -46,3 +46,14 @@ by filling at least one of text fields and pressing 'Search' button.
 >- A book is searched by genre from the Library.
 ---
 ## Phase 4: Task 3
+For now, when the book is added, the program produces a message that the book is added, and user can check
+that the library is updated when user select the 'Display BookList' button. Observer objects receive the notification and automatically update the screen to immediately show the book added by the user.
+So, it is following the Observer pattern. If I had more time, I would apply Singleton pattern and Refactoring to my GUI.
+For now, JsonReader and JsonWriter can have several instances, however, with singleton pattern, I can make that the JsonReader
+and JsonWriter classes share a single instance. This prevents unnecessary instance creation and save memory.
+Moreover, it reduces dependencies between classes and improves maintainability.
+
+By refactoring, I would divide the GUI class by the functionalities, such as AddBookUI, DisplayBookUI, SearchBookUI. 
+For now, my GUI class is too long, and not following 'Single Responsibility Principle,' so I can improve the cohesion
+and make each class function for single responsibility. Also, I can extract the duplicated code inside the methods, 
+ane make it as new method that would be implemented. Additionally, we can expect improvement of Composite pattern by dividing the classes.
