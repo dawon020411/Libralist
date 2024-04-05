@@ -31,7 +31,7 @@ public class Library implements Writable {
     }
 
 
-    // EFFECTS: return a list of books matching the specified search criteria
+    // EFFECTS: return a list of books matching the specified search criteria and print a message
     public List<Book> searchBook(String title, String author, String publisher,
                                  String publicationDate, String genre) {
         List<Book> result = new ArrayList<>();
@@ -53,7 +53,7 @@ public class Library implements Writable {
     }
 
 
-    // EFFECTS: return the total number of books in the library
+    // EFFECTS: return the total number of books in the library and print a message
     public int getBookCount() {
         EventLog.getInstance().logEvent(new Event("The number of books in the Library is counted."));
         return this.bookList.size();
@@ -61,7 +61,7 @@ public class Library implements Writable {
 
 
     // EFFECTS: return the list of books in the library that belong to the
-    //          specified genre
+    //          specified genre and print a message
     public List<Book> getBookByGenre(String genre) {
         List<Book> result = new ArrayList<>();
         for (Book book : this.bookList) {

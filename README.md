@@ -56,4 +56,4 @@ Moreover, it reduces dependencies between classes and improves maintainability.
 By refactoring, I would divide the GUI class by the functionalities, such as AddBookUI, DisplayBookUI, SearchBookUI. 
 For now, my GUI class is too long, and not following 'Single Responsibility Principle,' so I can improve the cohesion
 and make each class function for single responsibility. Also, I can extract the duplicated code inside the methods, 
-ane make it as new method that would be implemented. Additionally, we can expect improvement of Composite pattern by dividing the classes.
+ane make it as new method that would be implemented.

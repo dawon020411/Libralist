@@ -29,6 +29,7 @@ public class EventLog implements Iterable<Event> {
      * (Singleton Design Pattern)
      * @return  instance of EventLog
      */
+    //EFFECTS: Returns the single instance of EventLog. If the instance does not exist, creates it.
     public static EventLog getInstance() {
         if (theLog == null) {
             theLog = new EventLog();
@@ -40,6 +41,7 @@ public class EventLog implements Iterable<Event> {
      * Adds an event to the event log.
      * @param e the event to be added
      */
+    //EFFECTS: Adds the given event to the event log.
     public void logEvent(Event e) {
         events.add(e);
     }
@@ -47,11 +49,13 @@ public class EventLog implements Iterable<Event> {
     /**
      * Clears the event log and logs the event.
      */
+    //EFFECTS: Clears the event log and adds a new event indicating the log was cleared.
     public void clear() {
         events.clear();
         logEvent(new Event("Event log cleared."));
     }
 
+    //EFFECTS: Returns an iterator over the elements in the event log.
     @Override
     public Iterator<Event> iterator() {
         return events.iterator();

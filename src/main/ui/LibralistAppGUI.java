@@ -551,6 +551,7 @@ public class LibralistAppGUI extends JFrame {
         getGenreTextField.setText("");
     }
 
+    // EFFECTS: when the window is closed, print the Event messages in the console.
     private class CloseTheWindow extends WindowAdapter {
         public void windowClosing(WindowEvent e) {
             for (Event event : EventLog.getInstance()) {
