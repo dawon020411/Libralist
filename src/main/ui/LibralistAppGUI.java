@@ -527,7 +527,7 @@ public class LibralistAppGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (Event event : EventLog.getInstance()) {
-                    System.out.println(event.getDescription());
+                    System.out.println(event.toString());
                 }
                 System.exit(0);
             }
@@ -555,7 +555,7 @@ public class LibralistAppGUI extends JFrame {
     private class CloseTheWindow extends WindowAdapter {
         public void windowClosing(WindowEvent e) {
             for (Event event : EventLog.getInstance()) {
-                System.out.println(event.getDescription());
+                System.out.println(event.toString());
             }
 
             System.exit(0);

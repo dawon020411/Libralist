@@ -179,7 +179,7 @@ public class LibraryApplication {
     private void exitApplication() {
         System.out.println("Goodbye!");
         for (Event event : EventLog.getInstance()) {
-            System.out.println(event.getDescription());
+            System.out.println(event.toString());
         }
         System.exit(0);
     }
