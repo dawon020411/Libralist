@@ -1,6 +1,44 @@
-# LibraList
-https://youtu.be/VCXZdFzqKzM?si=U7zVQvLJ4phau2Mc
+# <div align="center"> LibraList</div>
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" width="30"/> [Libralist Simulation](https://youtu.be/VCXZdFzqKzM?si=U7zVQvLJ4phau2Mc)
 
+## Dev's Note💡
+
+- **Tracking** the books the users stored within the list.
+- **Store** the title, the author, the publisher, and the publication date of the books.
+- **Search** for the stored book by filters.
+- **View** the book's information
+
+<br />
+
+## Functions💡
+
+- A book is added to the Library.
+- A book is searched from the Library.
+- The number of books in the Library is counted.
+- A book is searched by genre from the Library.
+- The history is logged, and the user can save and load their previous library.
+
+<br />
+
+## Tech Stacks💡
+
+- Java
+- JSon Reader & Writer
+
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 ## List your books and search it !!
 
 >### What will the application do?
@@ -58,3 +96,4 @@ By refactoring, I would divide the GUI class by the functionalities, such as Add
 For now, my GUI class is too long, and not following 'Single Responsibility Principle,' so I can improve the cohesion
 and make each class function for single responsibility. Also, I can extract the duplicated code inside the methods, 
 ane make it as new method that would be implemented.
+-->
