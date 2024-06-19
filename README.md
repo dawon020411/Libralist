@@ -1,6 +1,6 @@
 # <div align="center"> LibraList</div>
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" width="30"/> [Libralist Simulation](https://youtu.be/VCXZdFzqKzM?si=U7zVQvLJ4phau2Mc) <br/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Notion-logo.svg/1024px-Notion-logo.svg.png" width="30"/> [Notion - Project Description](https://www.notion.so/Libralist-5751953459704e21be0c639efad00ee1?pvs=4)
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Notion-logo.svg/1024px-Notion-logo.svg.png" width="30"/> [Notion - Project Description](https://noon-bull-22f.notion.site/Libralist-5751953459704e21be0c639efad00ee1?pvs=4)
 
 ## Dev's Note💡
 
